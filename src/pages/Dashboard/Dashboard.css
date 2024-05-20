@@ -1,0 +1,30 @@
+.main_cont{
+    height: 100vh;
+}
+
+.add_new_btn{
+    background-color: #fff;
+    border-radius: 0.75rem;
+    color: black;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pagination{
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
