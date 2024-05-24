@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input"
 import { Chip } from "@nextui-org/react";
@@ -10,6 +10,29 @@ import Skeleton_ui from '@/components/Skeleton_ui';
 import Project_crad from '@/components/Project_crad';
 
 const ProjectPage = () => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    getUser();
+    return () => {};
+  }, []);
+
+  const getUser = async () => {
+    const username = "Ipseeka11";
+    const res = await fetch("http://localhost:3000/getUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username
+      })
+    })
+
+    const result = await res.json();
+    console.log("Result:",result);
+  }
+
   return (
     <main className='main_cont bg dark flex flex-col'>
       <div className='flex flex-col border-b-1 border-zinc-700'>

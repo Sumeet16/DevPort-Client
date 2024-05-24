@@ -1,15 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input"
 import { Chip } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
-import {Pagination} from "@nextui-org/react";
+import { Pagination } from "@nextui-org/react";
 import "./Dashboard.css";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import Skeleton_ui from '@/components/Skeleton_ui';
 import Project_crad from '@/components/Project_crad';
 
 const Dashboard = () => {
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        getUser();
+        return () => { };
+    }, []);
+
+    const getUser = async () => {
+        const username = "Ipseeka11";
+        const res = await fetch("http://localhost:3000/getUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username
+            })
+        })
+
+        const result = await res.json();
+        setUser(result)
+    }
+
+    console.log(user);
+    
+
     return (
         <main className='main_cont bg dark flex flex-col'>
             <div className='flex flex-col border-b-1 border-zinc-700'>
@@ -115,12 +141,12 @@ const Dashboard = () => {
                         <Skeleton_ui />
                     </div> */}
                     <div className="project_card_cont flex flex-row flex-wrap gap-5 pt-[4rem] justify-center items-center">
-                        <Project_crad/>
-                        <Project_crad/>
-                        <Project_crad/>
-                        <Project_crad/>
-                        <Project_crad/>
-                        <Project_crad/>
+                        <Project_crad />
+                        <Project_crad />
+                        <Project_crad />
+                        <Project_crad />
+                        <Project_crad />
+                        <Project_crad />
                     </div>
                     <Pagination total={10} initialPage={1} className='mt-5 pagination' />
                 </div>
