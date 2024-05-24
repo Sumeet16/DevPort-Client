@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input"
 import { Chip } from "@nextui-org/react";
@@ -10,6 +10,9 @@ import Skeleton_ui from '@/components/Skeleton_ui';
 import Project_crad from '@/components/Project_crad';
 
 const ProjectPage = () => {
+  
+
+
   return (
     <main className='main_cont bg dark flex flex-col'>
       <div className='flex flex-col border-b-1 border-zinc-700'>
