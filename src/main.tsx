@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Login from "./pages/Login/Login.tsx"
-import Dashboard from './pages/Dashboard/Dashboard.tsx';
+import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import { NextUIProvider } from "@nextui-org/react";
 import ProjectPage from './pages/ProjectPage/ProjectPage.tsx';
 import ImportProject from './pages/ImportProject/ImportProject.tsx';

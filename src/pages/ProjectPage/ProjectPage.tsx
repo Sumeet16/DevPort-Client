@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input"
 import { Chip } from "@nextui-org/react";
@@ -10,8 +10,27 @@ import Skeleton_ui from '@/components/Skeleton_ui';
 import Project_crad from '@/components/Project_crad';
 
 const ProjectPage = () => {
-  
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    getUser();
+    return () => {};
+  }, []);
 
+  const getUser = async () => {
+    const username = "Ipseeka11";
+    const res = await fetch("http://localhost:3000/getUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username
+      })
+    })
+
+    const result = await res.json();
+    console.log("Result:",result);
+  }
 
   return (
     <main className='main_cont bg dark flex flex-col'>
@@ -32,8 +51,14 @@ const ProjectPage = () => {
               <div className="user_profile w-6 h-6 rounded-full bg-red-500"></div>
               <div className="username font-light text-sm">sumeet16</div>
               <Chip size="sm">Hobby</Chip>
+
+
+
             </div>
           </div>
+         
+
+
           <div className='flex flex-row justify-center items-center gap-5'>
             <Button isIconOnly color="default" aria-label="notification">
               <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" stroke="#ffffff">
@@ -76,6 +101,8 @@ const ProjectPage = () => {
           </Button>
         </div>
       </div>
+
+      
       <div className="body w-full flex flex-col gap-4 mt-[7rem] p-10 px-[5%]">
         <div>
           <p className='text-2xl font-normal'>Production Deployment</p>
